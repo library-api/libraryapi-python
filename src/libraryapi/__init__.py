@@ -1,39 +1,96 @@
 """
 libraryapi — Python SDK for the libraryapi.dev API
 
-This is a placeholder release (v0.1.0) to claim the package name on PyPI.
-The real SDK will be published as v0.2.0 after the API launches.
+US public library facility, hours, services, and statistics data — sourced from
+the federal IMLS Public Libraries Survey.
 
-Usage (coming in v0.2.0):
+Usage:
     from libraryapi import LibraryAPI
 
     client = LibraryAPI(api_key="sk_live_...")
-    outlets = client.outlets.search(address="12865 Main St, Apple Valley, CA", radius_miles=10)
-    print(outlets[0].name)  # → Apple Valley Branch Library
+    outlets = client.outlets.near(address="14901 Dale Evans Pkwy, Apple Valley, CA")
+    print(outlets[0].name, outlets[0].distance_miles)        # Newton T. Bass... 0.14
+
+    system = client.libraries.fetch(outlets[0].fscs_id)
+    print(system.service_area.population)                    # 1263869
+
+Async:
+    import asyncio
+    from libraryapi import AsyncLibraryAPI
+
+    async def main():
+        async with AsyncLibraryAPI(api_key="sk_live_...") as client:
+            outlets = await client.outlets.near(address="...")
+
+    asyncio.run(main())
 
 Docs:    https://libraryapi.dev/docs
 GitHub:  https://github.com/library-api/libraryapi-python
 """
 
-__version__ = "0.1.0"
-__all__ = ["LibraryAPI"]
+__version__ = "0.2.0"
 
+from ._async_client import AsyncLibraryAPI
+from ._client import LibraryAPI
+from ._exceptions import (
+    AuthenticationError,
+    InvalidParamsError,
+    LibraryAPIError,
+    NotFoundError,
+    QuotaExceededError,
+    RateLimitError,
+)
+from ._models import (
+    Address,
+    Collections,
+    Finance,
+    GeoPoint,
+    LibrarySystem,
+    Locale,
+    Outlet,
+    OutletService,
+    ParentSystem,
+    Programs,
+    ResponseMeta,
+    ResponseSource,
+    ServiceArea,
+    StaffFTE,
+    StateAverages,
+    StateSummary,
+    StateTotals,
+    Technology,
+    Usage,
+)
 
-class LibraryAPI:
-    """
-    Client for the libraryapi.dev REST API.
-
-    Not yet implemented. Publishing v0.1.0 to claim the package name.
-    Real implementation ships as v0.2.0.
-
-    Args:
-        api_key: Your libraryapi.dev API key. Get one free at https://libraryapi.dev
-    """
-
-    def __init__(self, api_key: str):
-        raise NotImplementedError(
-            "libraryapi v0.1.0 is a placeholder release. "
-            "The real SDK ships as v0.2.0 after the API launches. "
-            "Follow @libraryapi on X or watch https://github.com/library-api/libraryapi-python "
-            "for updates."
-        )
+__all__ = [
+    "__version__",
+    "LibraryAPI",
+    "AsyncLibraryAPI",
+    # Models
+    "Outlet",
+    "LibrarySystem",
+    "StateSummary",
+    "Address",
+    "GeoPoint",
+    "ParentSystem",
+    "OutletService",
+    "Locale",
+    "ServiceArea",
+    "Collections",
+    "Programs",
+    "Technology",
+    "Usage",
+    "StaffFTE",
+    "Finance",
+    "StateTotals",
+    "StateAverages",
+    "ResponseMeta",
+    "ResponseSource",
+    # Exceptions
+    "LibraryAPIError",
+    "AuthenticationError",
+    "QuotaExceededError",
+    "NotFoundError",
+    "RateLimitError",
+    "InvalidParamsError",
+]

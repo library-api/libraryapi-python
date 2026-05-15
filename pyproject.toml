@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "libraryapi"
-version = "0.1.0"
-description = "Python SDK for the libraryapi.dev API — US public library facility, hours, services, and statistics data"
+version = "0.2.0"
+description = "Python SDK for libraryapi.dev — US public library facility, hours, services, and statistics data"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 keywords = ["public library", "libraries", "imls", "pls", "api", "sdk"]
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -19,14 +19,19 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.25.0",
 ]
 
 [project.urls]
-Homepage = "https://libraryapi.dev"
+Homepage      = "https://libraryapi.dev"
 Documentation = "https://libraryapi.dev/docs"
-Repository = "https://github.com/library-api/libraryapi-python"
+Repository    = "https://github.com/library-api/libraryapi-python"
 "Bug Tracker" = "https://github.com/library-api/libraryapi-python/issues"
 
 [tool.hatch.build.targets.wheel]
