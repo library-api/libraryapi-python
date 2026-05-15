@@ -1,15 +1,18 @@
 # libraryapi
 
-[![PyPI](https://img.shields.io/pypi/v/libraryapi.svg)](https://pypi.org/project/libraryapi/)
-[![Python](https://img.shields.io/pypi/pyversions/libraryapi.svg)](https://pypi.org/project/libraryapi/)
+[![PyPI](https://img.shields.io/pypi/v/libraryapi-sdk.svg)](https://pypi.org/project/libraryapi-sdk/)
+[![Python](https://img.shields.io/pypi/pyversions/libraryapi-sdk.svg)](https://pypi.org/project/libraryapi-sdk/)
 
 Official Python SDK for [libraryapi.dev](https://libraryapi.dev) — US public library facility, hours, services, and statistics data from the federal IMLS Public Libraries Survey. **9,252 systems · 17,586 outlets · FY 2023.**
 
 ## Install
 
 ```bash
-pip install libraryapi
+pip install libraryapi-sdk
 ```
+
+> **Note on naming:** `libraryapi` is taken on PyPI by an unrelated project. The
+> install name is `libraryapi-sdk`; the Python import name is `libraryapi`.
 
 Requires Python 3.9+. Only dependency is `httpx`.
 
